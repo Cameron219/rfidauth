@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Manage Users</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" href="main.css"/>
+	</head>
+	<body>
+		<div class="cover"></div>
+		<div class="container-users">
+			<h1>Users</h1>
+			<table class="table table-dark table-striped table-hover">
+				<thead>
+					<tr>
+						<td>#</td>
+						<td>Username</td>
+						<td>RFID UID</td>
+						<td>Modify</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i = 0; i < users.length; i++) {%>
+					<tr>
+						<td><%= users[i].id %></td>
+						<td><%= users[i].username %></td>
+						<td><%= users[i].rfid %></td>
+						<td><% if(i > 0){ %><a class="del" href="/delete?id=<%= users[i].id %>"><img src="delete.png"/></a><% } %></td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+			<a href="/add" role="button" class="btn btn-light">Add User</a>
+			<a href="/logout" id="logout" role="button" class="btn btn-primary">Log Out</a>
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			document.querySelector("a#logout").addEventListener("click", (e) => {
+				if(!confirm("Are you sure you wish to log out?")){
+					e.preventDefault();
+				}
+			}, true);
+			document.querySelectorAll("a.del").addEventListener("click", (e) => {
+				if(!confirm("Are you sure you wish to delete this user?"){
+					e.preventDefault();
+				}
+			});
+
+		</script>
+	</body>
+</html>

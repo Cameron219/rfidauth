@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RFID Login Prototype</title>
+		<link rel="stylesheet" href="main.css"/>
+	</head>
+	<body>
+		<div class="cover"></div>
+		<div class="container">
+			<h1>Add User</h1>
+			<form method="POST" action="add" id="add">
+				<input type="text" class="login-input" name="username" placeholder="Username" autocomplete="no" autofocus/>
+				<input type="password" class="login-input" name="password" placeholder="Password"/>
+				<input type="text" class="login-input" name="rfid" placeholder="RFID UID (Scan)"/>
+				<input type="submit" class="login-submit" name="add" value="Add"/>
+			</form>
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/add.js"></script>
+	</body>
+</html>
